@@ -44,7 +44,7 @@ Page({
     }
 
     // 调用updateMotto
-    this.updateMotto();
+    // this.updateMotto()
   },
   getUserInfo(e: any) {
     console.log(e)
