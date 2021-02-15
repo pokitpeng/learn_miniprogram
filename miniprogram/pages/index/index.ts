@@ -3,6 +3,7 @@
 const app = getApp<IAppOption>()
 
 Page({
+  count: 0, // 全局变量
   data: {
     motto: 'Hello World',
     userInfo: {},
@@ -56,10 +57,15 @@ Page({
   // 反面示例：频繁调用setData方法
   // 现象：会造成页面严重卡顿
   updateMotto() {
-    for (let i = 0; i < 10000; i++) {
+    this.count++
+
+    if (this.count < 10000) {
       this.setData({
-        motto: `update count:${i}`,
-      });
+        motto: `update count:${this.count}`
+      }, () => {
+        // 递归调用
+        this.updateMotto()
+      })
     }
   }
 })
