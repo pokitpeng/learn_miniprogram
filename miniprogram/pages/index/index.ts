@@ -42,6 +42,8 @@ Page({
         },
       })
     }
+    // 调用updateMotto
+    this.updateMotto();
   },
   getUserInfo(e: any) {
     console.log(e)
@@ -51,4 +53,13 @@ Page({
       hasUserInfo: true,
     })
   },
+  // 反面示例：频繁调用setData方法
+  // 现象：会造成页面严重卡顿
+  updateMotto() {
+    for (let i = 0; i < 10000; i++) {
+      this.setData({
+        motto: `update count:${i}`,
+      });
+    }
+  }
 })
